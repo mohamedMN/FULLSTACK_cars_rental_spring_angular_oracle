@@ -1,0 +1,53 @@
+<div *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
+  <div class="custom-navbar">
+    <div class="navbar-title">
+      <a routerLink="/login">Car Rental Service</a>
+    </div>
+
+    <div class="nav-links">
+      <a routerLink="/register"> Sign Up </a>
+
+      <a routerLink="/login"> Login </a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isAdminLoggedIn">
+  <div class="custom-navbar">
+    <div class="navbar-title">
+      <a routerLink="/admin/statistics">LoggedIn Admin</a>
+    </div>
+
+    <div class="nav-links">
+      <a routerLink="/admin/profile" routerLinkActive="active"> Profile </a>
+
+      <a routerLink="/admin/dashboard" routerLinkActive="active"> Dashboard </a>
+      <a routerLink="/admin/statistics" routerLinkActive="active"> Statistics </a>
+      <a routerLink="/admin/car" routerLinkActive="active"> Post Car </a>
+      <a routerLink="/admin/bookings" routerLinkActive="active"> Bookings </a>
+      <a routerLink="/admin/search" routerLinkActive="active"> Search </a>
+
+      <a routerLink="#" routerLinkActive="active" (click)="logout()"> Logout </a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isCustomerLoggedIn">
+  <div class="custom-navbar">
+    <div class="navbar-title">
+      <a routerLink="/customer/dashboard">LoggedIn Customer</a>
+    </div>
+
+    <div class="nav-links">
+      <a routerLink="/customer/profile" routerLinkActive="active"> Profile </a>
+
+      <a routerLink="/customer/dashboard" routerLinkActive="active"> Dashboard </a>
+
+      <a routerLink="/customer/my-bookings" routerLinkActive="active"> My Bookings </a>
+
+      <a routerLink="#" routerLinkActive="active" (click)="logout()"> Logout </a>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

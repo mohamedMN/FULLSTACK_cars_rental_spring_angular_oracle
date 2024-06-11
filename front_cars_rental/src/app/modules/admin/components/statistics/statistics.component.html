@@ -1,0 +1,49 @@
+<nz-spin [nzSpinning]="isSpinning">
+  <div class="p-6">
+    <!-- User Statistics -->
+    <div class="flex bg-slate-400 p-4 rounded-lg mb-4 shadow-md items-center justify-between">
+      <div>
+        <h2>User Statistics</h2>
+        <p><strong>Total Users:</strong> {{ userStatistics.totalUsers }}</p>
+        <p><strong>Users with Bookings:</strong> {{ userStatistics.usersWithBookings }}</p>
+      </div>
+    </div>
+
+    <!-- User Statistics Chart -->
+    <div class="flex bg-slate-400 p-4 rounded-lg mb-4 shadow-md items-center justify-between">
+      <h2>User Statistics Chart</h2>
+      <google-chart
+        [type]="userChart.type"
+        [data]="userChart.data"
+        [columns]="userChart.columns"
+        [options]="userChart.options"
+        [width]="userChart.width"
+        [height]="userChart.height">
+      </google-chart>
+    </div>
+
+    <!-- Booking Statistics -->
+    <div class="flex bg-slate-400 p-4 rounded-lg mb-4 shadow-md items-center justify-between">
+      <div>
+        <h2>Booking Statistics</h2>
+        <p><strong>Total Bookings:</strong> {{ bookingStatistics.totalBookings }}</p>
+        <p><strong>Pending Bookings:</strong> {{ bookingStatistics.pendingBookings }}</p>
+        <p><strong>Approved Bookings:</strong> {{ bookingStatistics.approvedBookings }}</p>
+        <p><strong>Rejected Bookings:</strong> {{ bookingStatistics.rejectedBookings }}</p>
+      </div>
+    </div>
+
+    <!-- Booking Statistics Chart -->
+    <div class="flex bg-slate-400 p-4 rounded-lg mb-4 shadow-md items-center justify-between">
+      <h2>Booking Statistics Chart</h2>
+      <google-chart
+        [type]="bookingChart.type"
+        [data]="bookingChart.data"
+        [columns]="bookingChart.columns"
+        [options]="bookingChart.options"
+        [width]="bookingChart.width"
+        [height]="bookingChart.height">
+      </google-chart>
+    </div>
+  </div>
+</nz-spin>

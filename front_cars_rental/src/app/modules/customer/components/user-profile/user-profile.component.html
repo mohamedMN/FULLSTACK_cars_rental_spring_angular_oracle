@@ -1,0 +1,68 @@
+<div class="profile-container">
+  <h1 class="title">User Profile</h1>
+  <form [formGroup]="passwordForm" (ngSubmit)="onSubmit()" class="profile-form">
+    <div *ngIf="userProfile">
+      <img
+        class="profile-photo"
+        src="../../../../../assets/image.png"
+        alt="Profile Photo"
+      />
+
+      <div *ngIf="!editMode" class="profile-view">
+        <p><strong>Name:</strong> {{ userProfile.name }}</p>
+        <p><strong>Email:</strong> {{ userProfile.email }}</p>
+        <strong for="adresse">Full adresse:</strong>
+        <input
+          type="adresse"
+          id="adresse"
+          value="lotissement village no666 kenitra morocco"
+          name="adresse"
+        />
+      </div>
+      <button type="button" class="edit-button" (click)="toggleEditMode()">
+        Edit Profile
+      </button>
+      <button type="button" class="edit-button" (click)="togglePasswordMode()">
+        Change Password
+      </button>
+    </div>
+
+    <div *ngIf="editMode && !changePasswordMode" class="profile-edit">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="{{ userProfile.name }}" />
+
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        value="{{ userProfile.email }}"
+        name="email"
+      />
+
+      <div *ngIf="editMode && changePasswordMode" class="profile-edit">
+        <h2 class="password-title">Change Password</h2>
+
+        <label for="currentPassword">Current Password:</label>
+        <input
+          formControlName="currentPassword"
+          type="password"
+          id="currentPassword"
+          name="currentPassword"
+        />
+
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" />
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" />
+      </div>
+
+      <div class="button-group">
+        <button type="submit" class="save-button">Save Changes</button>
+        <button type="button" class="cancel-button" (click)="toggleEditMode()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

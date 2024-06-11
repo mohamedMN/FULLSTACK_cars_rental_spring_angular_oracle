@@ -1,0 +1,56 @@
+<nz-spin [nzSpinning]="isSpinning">
+  <div class="p-6">
+    <div
+      *ngFor="let booking of bookings"
+      class="flex bg-slate-400 p-4 rounded-lg mb-4 shadow-md items-center justify-between"
+    >
+      <div>
+    <h3>Booking ID: {{ booking.id }}</h3>
+    <p><strong>Status:</strong> {{ booking.bookCarStatus }}</p>
+    <p><strong>From:</strong> {{ booking.fromDate | date:'short' }}</p>
+    <p><strong>To:</strong> {{ booking.toDate | date:'short' }}</p>
+    <p><strong>Days:</strong> {{ booking.days }}</p>
+    <p><strong>Price:</strong> {{ booking.price }}</p>
+    <p><strong>Car ID:</strong> {{ booking.carId }}</p>
+    <p><strong>User ID:</strong> {{ booking.userId }}</p>
+    <p><strong>Username:</strong> {{ booking.username }}</p>
+    <p><strong>Email:</strong> {{ booking.email }}</p></div>
+
+      <div *ngIf="booking.bookCarStatus == 'PENDING'">
+        <button
+          style="margin-left: 10px"
+          nzSize="small"
+          nz-button
+          nzType="primary"
+          (click)="changeBookingStatus(booking.id, 'Approve')"
+        >
+          Approve
+        </button>
+
+        <button
+          style="margin-left: 10px"
+          nzSize="small"
+          nz-button
+          nzType="primary"
+          nzDanger
+          (click)="changeBookingStatus(booking.id, 'Reject')"
+        >
+          Reject
+        </button>
+      </div>
+
+      <div *ngIf="booking.bookCarStatus == 'APPROVED'">
+        <button
+          style="margin-left: 10px"
+          nzSize="small"
+          nz-button
+          nzType="primary"
+		  nzDanger
+          (click)="refundBooking(booking.id)"
+        >
+          Refund
+        </button>
+      </div>
+    </div>
+  </div>
+</nz-spin>
